@@ -3,6 +3,7 @@
 */
 import express from 'express';
 import fs from 'fs';
+import helmet from 'helmet';
 
 import renderHtml from './render';
 
@@ -10,6 +11,8 @@ require('css-modules-require-hook/preset');
 
 const app = express();
 
+// basic security with helmet middleware
+app.use(helmet());
 // load bundle from dist
 app.use('/main.js', (req, res) => {
   res.type('js');

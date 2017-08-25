@@ -48,6 +48,7 @@
     "css-modules-require-hook": "^4.0.6",
     "express": "^4.15.4",
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    "helmet": "^3.8.1",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",
     "react": "^15.6.1",
