@@ -8,15 +8,16 @@
     "flow"
   ],
   "env": {
-        "server": {
-            "plugins": [
-                [
-                    "css-modules-transform", {
-                        "generateScopedName": "[hash:8]",
-                        "extensions": [".css"]
-                    }
-                ]
-            ]
-        }
+    "server": {
+      "plugins": [
+        [
+          "css-modules-transform", {
+            "preprocessCss": "./loaders/sass-loader.js",
+            "generateScopedName": "[hash:8]",
+            "extensions": [".scss"]
+          }
+        ]
+      ]
     }
+  }
 }

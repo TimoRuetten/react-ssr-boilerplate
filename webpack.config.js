@@ -57,6 +57,26 @@ const config = {
         exclude: /(node_modules)/,
       },
       {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract({
+          loader: [
+            {
+              loader: 'css-loader',
+              query: {
+                localIdentName: '[hash:8]',
+                modules: true,
+              },
+            },
+            {
+              loader: 'postcss-loader',
+            },
+            {
+              loader: 'sass-loader',
+            },
+          ],
+        }),
+      },
+      {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
           loader: [
@@ -66,6 +86,9 @@ const config = {
                 localIdentName: '[hash:8]',
                 modules: true,
               },
+            },
+            {
+              loader: 'postcss-loader',
             },
           ],
         }),

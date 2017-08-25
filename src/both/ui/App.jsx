@@ -2,8 +2,7 @@
   Our <App /> which gets rendered into the root node
 */
 import React from 'react';
-import styles from './app.css';
-// const styles = { title: 'a' };
+import styles from './app.scss';
 
 
 export default class App extends React.Component {
@@ -17,6 +16,9 @@ export default class App extends React.Component {
         <h1 className={styles.title}>
           Isomorphic React App
         </h1>
+        <p className={styles.text}>
+          Brown text.
+        </p>
       </div>
     );
   }
