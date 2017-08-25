@@ -6,12 +6,18 @@ import fs from 'fs';
 
 import renderHtml from './render';
 
+require('css-modules-require-hook/preset');
+
 const app = express();
 
 // load bundle from dist
-app.use('/bundle.js', (req, res) => {
+app.use('/main.js', (req, res) => {
   res.type('js');
-  fs.createReadStream('./dist/bundle.js').pipe(res);
+  fs.createReadStream('./dist/main.js').pipe(res);
+});
+app.use('/main.css', (req, res) => {
+  res.type('css');
+  fs.createReadStream('./dist/main.css').pipe(res);
 });
 // setup static files for public dir
 app.use(express.static('public'));

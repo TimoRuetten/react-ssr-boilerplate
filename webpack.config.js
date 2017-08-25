@@ -1,16 +1,35 @@
 const path = require('path');
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 const config = {
+  entry: {
+    main: './src/client',
+  },
+  /*
   entry: [
     './src/client',
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-  },
-  devtool: 'source-map',
+  },*/
+  devtool: 'inline-source-map',
+  /*
   resolve: {
     extensions: ['.js', '.jsx'],
+  },
+  */
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
+  },
+  resolve: {
+    extensions: [
+      '.js',
+      '.jsx',
+      '.css',
+    ],
   },
   externals: [
     function excludeDir(context, request, callback) {
@@ -26,18 +45,38 @@ const config = {
         test: /\.txt$/,
         use: 'raw-loader',
       },
+      /*
       {
         test: /\.css$/,
         use: 'css-loader',
       },
+      */
       {
         test: /\.(js|jsx)$/,
         loaders: 'babel-loader',
         exclude: /(node_modules)/,
       },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({
+          loader: [
+            {
+              loader: 'css-loader',
+              query: {
+                localIdentName: '[hash:8]',
+                modules: true,
+              },
+            },
+          ],
+        }),
+      },
     ],
   },
   plugins: [
+    new ExtractTextPlugin({
+      filename: '[name].css',
+      allChunks: true,
+    }),
   ],
 };
 

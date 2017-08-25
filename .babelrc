@@ -7,4 +7,16 @@
     "stage-2",
     "flow"
   ],
+  "env": {
+        "server": {
+            "plugins": [
+                [
+                    "css-modules-transform", {
+                        "generateScopedName": "[hash:8]",
+                        "extensions": [".css"]
+                    }
+                ]
+            ]
+        }
+    }
 }

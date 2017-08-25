@@ -2,17 +2,22 @@
   Our <App /> which gets rendered into the root node
 */
 import React from 'react';
+import styles from './app.css';
+// const styles = { title: 'a' };
 
-class App extends React.Component {
+
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
   render() {
     return (
-      <h1>Welcome to our React-App Component!</h1>
+      <div>
+        <h1 className={styles.title}>
+          Isomorphic React App
+        </h1>
+      </div>
     );
   }
 }
-
-export default App;
