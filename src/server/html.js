@@ -21,7 +21,8 @@ function HTML({
         ${Object
           .keys(payload)
           .map((store) =>
-          `window.${store}=${serialize(payload[store], { isJSON: true, space: 0 })}`)}
+          `window.${store}=${serialize(payload[store], { isJSON: true, space: 0 })}`)
+          .join(';')}
         </script>
         <script src="/main.js"></script>
       </body>
