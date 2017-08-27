@@ -1,4 +1,5 @@
 import pretty from 'pretty';
+import serialize from 'serialize-javascript';
 
 function HTML({
   htmlAttributes = '',
@@ -6,6 +7,7 @@ function HTML({
   bodyAttributes = '',
   appHtml = '',
   prettify,
+  payload = {},
 }) {
   return `
     <html${` ${htmlAttributes}`}>
@@ -16,6 +18,12 @@ function HTML({
       <body${` ${bodyAttributes}`}>
         <div id="app">${prettify ? pretty(appHtml) : appHtml}</div>
         <script src="/main.js"></script>
+        <script>
+        ${Object
+          .keys(payload)
+          .map((store) =>
+          `window.${store}=${serialize(payload[store], { isJSON: true, space: 0 })}`)}
+        </script>
       </body>
     </html>
   `;
